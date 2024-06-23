@@ -5,7 +5,7 @@ $(document).ready(function () {
         },
         "columnDefs": [
             {
-                "targets": -1, // Última coluna (ações)
+                "targets": -1, // Ãšltima coluna (aÃ§Ãµes)
                 "render": function (data, type, row, meta) {
                     return `
                         <button type="button" class="btn btn-info edit-sale-btn">Editar</button>
@@ -17,7 +17,7 @@ $(document).ready(function () {
         ]
     });
 
-    // Função para adicionar venda
+    // FunÃ§Ã£o para adicionar venda
     $('#addSaleBtn').click(function () {
         var saleId = $('#addSaleId').val().trim();
         var saleDate = $('#addSaleDate').val().trim();
@@ -45,7 +45,7 @@ $(document).ready(function () {
         }
     });
 
-    // Função para editar venda
+    // FunÃ§Ã£o para editar venda
     $('#salesTable tbody').on('click', '.edit-sale-btn', function () {
         var currentRow = $(this).closest('tr');
         var data = dataTable.row(currentRow).data();
@@ -58,8 +58,8 @@ $(document).ready(function () {
 
         $('#editSaleModal').modal('show');
 
-        // Remover evento de clique anterior para evitar múltiplas associações
-        $('#saveSaleChangesBtn').off('click').on('click', function () {
+        // Remover evento de clique anterior para evitar mÃºltiplas associaÃ§Ãµes
+        $('#saveChangesBtn').off('click').on('click', function () {
             var newData = [
                 $('#editSaleId').val().trim(),
                 $('#editSaleDate').val().trim(),
@@ -72,17 +72,17 @@ $(document).ready(function () {
 
             dataTable.row(currentRow).data(newData).draw();
 
-            $('#editSaleModal').modal('hide'); // Fechar o modal após salvar
+            $('#editSaleModal').modal('hide'); // Fechar o modal apÃ³s salvar
         });
     });
 
-    // Função para excluir venda
+    // FunÃ§Ã£o para excluir venda
     $('#salesTable tbody').on('click', '.delete-sale-btn', function () {
         var currentRow = $(this).closest('tr');
         dataTable.row(currentRow).remove().draw();
     });
 
-    // Evento para esconder o modal de adição ao fechar
+    // Evento para esconder o modal de adiÃ§Ã£o ao fechar
     $('#addSaleModal').on('hidden.bs.modal', function () {
         $('#addSaleForm')[0].reset();
     });
